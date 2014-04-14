@@ -5,7 +5,7 @@ infilename = sys.argv[2]
 outfilename = sys.argv[3]
 dictlist = []
 
-with open(infilename, 'r') as infile:
+with open(infilename, 'rU') as infile:
   drobject = csv.DictReader(infile)
   for row in drobject:
     dictlist.append(row)

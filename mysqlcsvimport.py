@@ -18,16 +18,16 @@ with open(filename) as file:
   fields = ''
   for item in headers:
     if len(fields) == 0:
-      fields = str(item)
+      fields = '`' + str(item) + '`'
     else:
-      fields = fields + ', ' + str(item)
+      fields = fields + ', `' + str(item) + '`'
   for item in input:
     values = ''
     for element in headers:
       if len(values) == 0:
-        values = "'"+str(item[element])+"'"
+        values = '"'+str(item[element].replace('"', "'"))+'"'
       else:
-        values = values + ", '" + str(item[element]) + "'"
+        values = values + ', "' + str(item[element]).replace('"', "'") + '"'
     print item
     query = "insert into {3}.{2} ({0}) values ({1});".format(fields, values, tablename, dbname)
     print query
